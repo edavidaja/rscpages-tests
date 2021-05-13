@@ -1,0 +1,101 @@
+---
+output:
+  html_document:
+    theme:
+      version: 4
+params:
+  rsc_group_name:
+    input: select
+    label: "select a group:"
+    value: Solutions Engineer
+    choices: !expr connectapi::get_groups(connectapi::connect())[["name"]]
+---
+
+```{css, echo=FALSE}
+.main-container {
+    width: 100%;
+    max-width: unset;
+}
+
+.main {
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* https://codepen.io/eversionsystems/pen/YOmqdj */
+.jumbotron {
+  color: white;
+  background-image: url("joseph-greve-rst3YOh6LXA-unsplash.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80vh;
+}
+```
+
+```{r, include=FALSE}
+library(rscpages)
+library(magrittr)
+library(dplyr)
+library(purrr)
+library(htmltools)
+knitr::opts_chunk$set(
+  comment = "", fig.width = 6, fig.height = 6,
+  echo = FALSE, warning = FALSE, message = FALSE
+)
+
+conn <- connectapi::connect()
+
+rsc_content <-
+  connect() %>%
+  content()
+
+rsc_group_id <- connectapi::get_groups(conn) %>%
+  filter(name == params$rsc_group_name) %>%
+  pull(guid)
+
+rsc_group_members <- connectapi::get_group_members(conn, rsc_group_id) %>%
+  pull(guid)
+
+rsc_content_filtered <-
+  rsc_content %>%
+  filter(
+    owner_guid %in% rsc_group_members
+  )
+
+# todo(): card for content with max engagement
+```
+
+```{r}
+div(
+  class = "jumbotron jumbotron-fluid",
+  div(
+    class = "container",
+    h1("Data Science Directory", class = "display-3"),
+    p("Veniam nulla adaptogen duis, esse microdosing listicle leggings.
+      Squid bitters retro, cloud bread viral next level organic butcher umami woke gochujang pop-up sint meditation.")
+  )
+)
+```
+
+```{r}
+div(
+  class = "main",
+  h3(params$rsc_group_name, class = "text-center"),
+  bscols(
+    rscsearch(rsc_content_filtered),
+    rscfilter(rsc_content_filtered)
+  ),
+  rscgrid(rsc_content_filtered)
+  # {
+  #   rsc_content_filtered %>%
+  #     group_by(owner_username) %>%
+  #     group_map(
+  #       ~ tagList(
+  #         h4(unique(.x$owner_first_name)),
+  #         rscgrid(.x)
+  #       )
+  #     )
+  # }
+)
+```

@@ -1,0 +1,10 @@
+---
+title: aerials
+---
+
+```{r}
+
+x <- system2('curl',  c('-X GET "https://colorado.rstudio.com/rsc/content/7e5c6025-093c-42a1-b21c-de0ac5b043dc/greetings/"', '-H "accept: application/json"'), stdout = TRUE)
+x
+```
+

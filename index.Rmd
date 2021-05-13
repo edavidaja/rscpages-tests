@@ -1,0 +1,51 @@
+---
+title: common
+subtitle: curated pages
+---
+
+```{r, include=FALSE}
+library(rscpages)
+library(magrittr)
+library(dplyr)
+library(purrr)
+
+alles <- connect(
+  server = config::get(value = "SERVER"), 
+  api_key = config::get(value = "API_KEY")
+  ) %>% 
+  content() 
+
+cleaned_content_types <- 
+alles %>% 
+  mutate(
+    content_cat = case_when(
+      content_category != "" ~ content_category,
+      TRUE ~ app_mode
+    )
+  ) 
+
+split_types <- split(cleaned_content_types, cleaned_content_types$content_cat)
+```
+
+## a content index
+
+```{r, include=FALSE}
+rsctable(split_types$api)
+```
+
+
+```{r, results='asis', echo=FALSE}
+iwalk(split_types, ~ {
+  cat("###", .y, "\n")
+  print(htmltools::tagList(rsctable(.x)))
+})
+```
+
+<hr>
+
+observations:
+
+- how will automatic key discovery work for users who may be expected to deploy to test and prod connect instances?  
+- content_category should return NA rather than empty string  
+- is everything of unknown app mode a failed publish, and should it be suppressed on fetch if so?
+- clear docs on suppressing search at table level
