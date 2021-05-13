@@ -51,6 +51,13 @@
       "Repository": "RSPM",
       "Hash": "9fe98599ca456d6552421db0d6772d8f"
     },
+    "bslib": {
+      "Package": "bslib",
+      "Version": "0.2.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "e2049406d0e4f37de7b9f1a1a794eb8a"
+    },
     "cli": {
       "Package": "cli",
       "Version": "2.2.0",
@@ -194,6 +201,13 @@
       "Repository": "RSPM",
       "Hash": "a525aba14184fec243f9eaec62fbed43"
     },
+    "jquerylib": {
+      "Package": "jquerylib",
+      "Version": "0.1.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "5ff50b36f7f0832f8421745af333e73c"
+    },
     "jsonlite": {
       "Package": "jsonlite",
       "Version": "1.7.2",
@@ -292,6 +306,13 @@
       "Repository": "RSPM",
       "Hash": "97def703420c8ab10d8f0e6c72101e02"
     },
+    "rappdirs": {
+      "Package": "rappdirs",
+      "Version": "0.3.3",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Hash": "5e3c5dc0b071b21fa128676560dbe94d"
+    },
     "reactR": {
       "Package": "reactR",
       "Version": "0.4.3",
@@ -342,9 +363,9 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "rstudio",
       "RemoteRepo": "rscpages",
-      "RemoteRef": "mnv-grid-view",
-      "RemoteSha": "ab7554833e6d8e895a01606aaf3de0a9d291b157",
-      "Hash": "eeab0aeba129743b96fe5e98c6400ef4"
+      "RemoteRef": "main",
+      "RemoteSha": "49fb7518df12f82aa8f03563f36899e906bcb72f",
+      "Hash": "95c1fe37952d1dab4a14e47dc9e96645"
     },
     "rstudioapi": {
       "Package": "rstudioapi",
@@ -352,6 +373,13 @@
       "Source": "Repository",
       "Repository": "RSPM",
       "Hash": "06c85365a03fdaf699966cc1d3cf53ea"
+    },
+    "sass": {
+      "Package": "sass",
+      "Version": "0.4.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "50cf822feb64bb3977bda0b7091be623"
     },
     "stringi": {
       "Package": "stringi",
