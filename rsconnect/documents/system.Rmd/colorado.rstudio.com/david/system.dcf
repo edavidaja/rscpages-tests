@@ -1,0 +1,12 @@
+name: system
+title: system
+username: david
+account: david
+server: colorado.rstudio.com
+hostUrl: https://colorado.rstudio.com/rsc/__api__
+appId: 9247
+bundleId: 45328
+url: https://colorado.rstudio.com/rsc/content/91e8053c-7643-469f-b65e-f20083660dfe/
+when: 1620912787.1497
+asMultiple: FALSE
+asStatic: FALSE

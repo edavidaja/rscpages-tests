@@ -1,0 +1,13 @@
+name: rscpages-tests5
+title: rscpages-tests
+username: david
+account: david
+server: colorado.rstudio.com
+hostUrl: https://colorado.rstudio.com/rsc/__api__
+appId: 9032
+bundleId: 44694
+url: https://colorado.rstudio.com/rsc/rscpages-tests/
+when: 1618411961.19841
+asMultiple: FALSE
+asStatic: FALSE
+additionalFiles: config.yml

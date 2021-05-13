@@ -1,0 +1,12 @@
+name: rscpages-tests
+title: rscpages-tests
+username: david
+account: david
+server: rsc.radixu.com
+hostUrl: https://rsc.radixu.com/__api__
+appId: 4879
+bundleId: 9186
+url: https://rsc.radixu.com/content/92f064b6-7ce1-47dd-b799-6abb9d3a4e88/
+when: 1617640228.21995
+asMultiple: FALSE
+asStatic: FALSE
