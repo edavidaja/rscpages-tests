@@ -1,6 +1,6 @@
 ---
 resource_files:
-  - joseph-greve-rst3YOh6LXA-unsplash.jpg
+  - assets/joseph-greve-rst3YOh6LXA-unsplash.jpg
 output:
   html_document:
     theme:
@@ -9,17 +9,8 @@ params:
   rsc_group_name:
     input: select
     label: 'select a group:'
-    value: Solutions Engineer
-    choices:
-    - Connect Admin
-    - Default
-    - Developer
-    - solutions
-    - Solutions Engineer
-    - Staging
-    - test_group
-    - test_group2
-    - Test Role
+    value: grouper_scooper
+    choices: !expr connectapi::get_groups(connectapi::connect())[["name"]]
 ---
 
 ```{css, echo=FALSE}
@@ -36,7 +27,7 @@ params:
 /* https://codepen.io/eversionsystems/pen/YOmqdj */
 .jumbotron {
   color: white;
-  background-image: url("joseph-greve-rst3YOh6LXA-unsplash.jpg");
+  background-image: url("assets/joseph-greve-rst3YOh6LXA-unsplash.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -97,16 +88,21 @@ div(
     rscsearch(rsc_content_filtered),
     rscfilter(rsc_content_filtered)
   ),
-  rscgrid(rsc_content_filtered)
-  # {
-  #   rsc_content_filtered %>%
-  #     group_by(owner_username) %>%
-  #     group_map(
-  #       ~ tagList(
-  #         h4(unique(.x$owner_first_name)),
-  #         rscgrid(.x)
-  #       )
-  #     )
-  # }
+  {
+  rsc_content_filtered %>%
+    group_by(owner_username) %>%
+    group_map(
+      ~ tagList(
+        h4(unique(.x$owner_first_name)),
+        rscgrid(.x)
+      )
+    )
+  }
+)
+```
+
+```{r, include=FALSE}
+rmarkdown::output_metadata$set(
+  rsc_output_files = list.files("assets", recursive = TRUE, full.names = TRUE)
 )
 ```
